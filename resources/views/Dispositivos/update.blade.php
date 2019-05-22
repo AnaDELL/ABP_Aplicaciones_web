@@ -1,4 +1,4 @@
-@extends("Inicio.layaut")
+@extends("Inicio.lau")
 @section("title","Agergar dispositivos")
 
 @section("content")

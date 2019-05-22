@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset("css/app.css")}}" type="text/css">
     <link rel="stylesheet" href="css/app.css" type="text/css">
-    <link rel="stylesheet" href="css/estilos2.css" type="text/css">
+
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>@yield('title')</title>
@@ -22,6 +22,8 @@
             text-align : center;
             font-family: Dyuthi;
             font-size : 35pt;
+
+
         }
     </style>
 
@@ -42,14 +44,7 @@
 
 <body background="css/campooo.jpg" >
 
-    <div class="slider">
-        <ul>
-            <li> <img src="css/img1.jpg" alt=""> </li>
-            <li> <img src="css/img2.jpg" alt=""> </li>
-            <li> <img src="css/img3.jpg" alt=""> </li>
-        </ul>
 
-    </div>
 
 
 

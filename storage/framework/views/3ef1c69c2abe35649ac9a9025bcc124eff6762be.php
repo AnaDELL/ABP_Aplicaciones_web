@@ -1,7 +1,7 @@
 <?php $__env->startSection("title","Animales"); ?>
 
 <?php $__env->startSection("content"); ?>
-    
+
     <div class="row justify-content-md-end">
         <div class="col">
             <a class="btn btn-success" href="<?php echo e(url("animales/create")); ?>"><i class="fa fa-plus"></i> Registrar Nuevo</a>
@@ -9,22 +9,9 @@
     </div>
     <div class="row justify-content-md-end">
         <div class="col-10">
-            <table border="1"> <!--Crear tabla -->
-                <tr><!--fila -->
-
-                    <td id="text"><STRONG>Nombre</STRONG></td>
-                    <td id="text"><STRONG>Apellido Paterno</STRONG></td>
-                    <td id="text"><STRONG>Apellido Materno</STRONG></td>
-                    <td id="text "><STRONG>Semestre</STRONG></td>
-                </tr>
-
-            </table>
-        </div>
-
-            <!--<table class="table">
+            <table class="table">
                 <thead>
                 <tr>
-                    <th></th>
                     <th>No. Animal</th>
                     <th>Ganadero</th>
                     <th>Sexo</th>
@@ -33,12 +20,36 @@
                     <th>Clave de animal</th>
                     <th>Peso</th>
                     <th>Edad</th>
+                    <th colspan="2">Eliminar/Modificar</th>
                 </tr>
                 </thead>
-                <tbody>
+                <?php $__currentLoopData = $animales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $animal): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                        <td><?php echo e($animal->id_animal); ?></td>
+                        <th><?php echo e($animal->getGanadero[0]->usuario); ?></th>
+                        <th><?php echo e($animal->getSexos[0]->desc_sexo); ?></th>
+                        <th><?php echo e($animal->getTipoganado[0]->desc_ganado); ?></th>
+                        <th><?php echo e($animal->getDispositivo[0]->clave_dis); ?></th>
+                        <td><?php echo e($animal->clave); ?></td>
+                        <th><?php echo e($animal->peso); ?> kg</th>
+                        <th><?php echo e($animal->edad); ?> años</th>
+                        <td>
+                            <form action="<?php echo e(route("animales.destroy",$animal->id_animal)); ?>" method="post">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field("DELETE"); ?>
+                                <button class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="<?php echo e(url("animales",$animal->id_animal)); ?>/edit" class="btn btn-outline-success"><i class="far fa-edit"></i> </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </tbody>
+            </table>
+        </div>
 
-                </tbody>
-            </table>-->
+            <!---->
         </div>
     </div>
     <div class="justify-content-center">

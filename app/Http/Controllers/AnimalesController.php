@@ -47,7 +47,6 @@ class AnimalesController extends Controller
     {
         //
         Animales::create($request->all());
-
         return redirect("animales");
     }
 
@@ -70,9 +69,13 @@ class AnimalesController extends Controller
          * @return \Illuminate\Http\Response
          */
         public
-        function edit(Animales $animales)
+        function edit(Animales $animale)
         {
-
+            $tganados=Tganado::all();
+            $sexos=Sexos::all();
+            $dispositivos=Dispositivos::all();
+            $ganaderos=Ganaderos::all();
+            return view("Animales.edit",compact('animale','dispositivos','sexos','tganados','ganaderos'));
         }
 
         /**
@@ -97,9 +100,10 @@ class AnimalesController extends Controller
          * @return \Illuminate\Http\Response
          */
         public
-        function destroy(Animales $animal)
+        function destroy(Animales $animale)
         {
-
+            $animale->delete();
+            return redirect("animales");
         }
 
 }

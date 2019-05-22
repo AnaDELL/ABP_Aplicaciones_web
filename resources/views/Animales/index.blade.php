@@ -1,4 +1,4 @@
-@extends("Inicio.layaut")
+@extends("Inicio.lau")
 @section("title","Animales")
 
 @section("content")
@@ -13,7 +13,6 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th></th>
                     <th>No. Animal</th>
                     <th>Ganadero</th>
                     <th>Sexo</th>
@@ -22,11 +21,32 @@
                     <th>Clave de animal</th>
                     <th>Peso</th>
                     <th>Edad</th>
+                    <th colspan="2">Eliminar/Modificar</th>
                 </tr>
                 </thead>
-                <tbody>
-
-                </tbody>
+                @foreach($animales as $animal)
+                    <tr>
+                        <td>{{$animal->id_animal}}</td>
+                        <th>{{$animal->getGanadero[0]->usuario}}</th>
+                        <th>{{$animal->getSexos[0]->desc_sexo}}</th>
+                        <th>{{$animal->getTipoganado[0]->desc_ganado}}</th>
+                        <th>{{$animal->getDispositivo[0]->clave_dis}}</th>
+                        <td>{{$animal->clave}}</td>
+                        <th>{{$animal->peso}} kg</th>
+                        <th>{{$animal->edad}} años</th>
+                        <td>
+                            <form action="{{route("animales.destroy",$animal->id_animal)}}" method="post">
+                                @csrf
+                                @method("DELETE")
+                                <button class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                        <td>
+                            <a href="{{url("animales",$animal->id_animal)}}/edit" class="btn btn-outline-success"><i class="far fa-edit"></i> </a>
+                        </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
             </table>
         </div>
 

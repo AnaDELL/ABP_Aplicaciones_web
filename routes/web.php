@@ -13,10 +13,10 @@
 
 
 Route::get('/', function () {
-    return view('Login.index');
+    return view('Inicio.layaut');
 });
 Route::get('/regresar', function () {
-    return view('Login.index');
+    return view('Inicio.layaut');
 });
 
 Route::get('/persons', function () {

@@ -1,4 +1,4 @@
-@extends("Inicio.layaut")
+@extends("Inicio.lau")
 @section("title","Tipos Ganados")
 @section("content")
     <div class="row justify-content-md-center">
